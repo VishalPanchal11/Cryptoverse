@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import axios from "axios";
 
 const cryptoApiHeaders = {
   "x-rapidapi-key": "06b79fa730msh45a05707a561b7ap1a219djsndc51560e187d",
@@ -21,4 +20,4 @@ export const cryptoApi = createApi({
   }),
 });
 
-export const { useGetCryptosQuery, } = cryptoApi;
+export const { useGetCryptosQuery } = cryptoApi;
