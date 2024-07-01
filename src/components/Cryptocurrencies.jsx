@@ -3,9 +3,10 @@ import { Card, Row, Col, Input } from "antd";
 import { Link } from "react-router-dom";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import millify from "millify";
+import Loader from "./Loader";
 
 const Cryptocurrencies = ({ simplified }) => {
-  const count = simplified ? 10 : 100;
+  const count = simplified ? 12 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
 
   const [cryptos, setCryptos] = useState([]);
@@ -18,7 +19,7 @@ const Cryptocurrencies = ({ simplified }) => {
     setCryptos(filteredData);
   }, [cryptosList, searchTerm]);
 
-  if (isFetching) return "Loading...";
+  if (isFetching) return <Loader/>;
 
   return (
     <>
@@ -49,6 +50,7 @@ const Cryptocurrencies = ({ simplified }) => {
                     src={currency.iconUrl}
                     height={35}
                     width={35}
+                    alt={currency.name}
                   />
                 }
                 hoverable

@@ -6,6 +6,7 @@ import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 
 import newsIcon from "../images/news.png";
+import Loader from "./Loader";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -26,7 +27,7 @@ const News = ({ simplified }) => {
     setNewsCrypto(filteredData);
   }, [cryptoNews, searchTerm]);
 
-  if (isFetching) return "Loading...";
+  if (isFetching) return <Loader/>;
 
   return (
     <Row gutter={[24, 24]}>
